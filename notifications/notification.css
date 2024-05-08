@@ -1,0 +1,14 @@
+.notification {
+  border: solid 2px black;
+  padding: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.notification.error {
+  background-color: rgb(218, 74, 17);
+}
+
+.notification.success {
+  background-color: rgb(76, 161, 19);
+}
