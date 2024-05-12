@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up</title>
+  </head>
+  <body>
+    <script type="module" src="signup.js"></script>
+    <form method="post" id="register">
+      <h2>Registro de usuario</h2>
+      <div>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required />
+      </div>
+      <div>
+        <label for="password">Contraseña:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          minlength="6"
+        />
+      </div>
+      <div>
+        <label for="password">Contraseña verificación:</label>
+        <input
+          type="password"
+          id="password-confirmation"
+          name="password-confirmation"
+          required
+        />
+      </div>
+      <button type="submit">Enviar</button>
+    </form>
+  </body>
+</html>

@@ -1,5 +1,8 @@
 import { getAdds } from "./advert-list-model.js";
 import { builAdvert } from "./advert-list-view.js";
+import { buildNotificationController } from "../notifications/notification-controller.js";
+
+const { showNotifications } = buildNotificationController();
 
 export function addListController(advertList) {
   const showAddButton = document.createElement("button");
