@@ -1,7 +1,7 @@
 import { buildNotifications } from "./notification-view.js";
 
 export function buildNotificationController(notificationContainer) {
-  function showNotifications(message, type = "success") {
+  function showNotifications(message, type) {
     const notification = document.createElement("div");
     notification.classList.add("notification", type);
     notification.innerHTML = buildNotifications(message);
@@ -9,7 +9,7 @@ export function buildNotificationController(notificationContainer) {
 
     setTimeout(() => {
       notification.remove();
-    }, 6000);
+    }, 3000);
   }
   return { showNotifications };
 }

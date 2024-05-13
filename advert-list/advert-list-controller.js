@@ -1,7 +1,7 @@
 import { getAdds } from "./advert-list-model.js";
 import { builAdvert, buildEmptyAdvert } from "./advert-list-view.js";
-import { spinnerController } from "../spinner/spinner-controller.js";
 import { loadSpinner } from "../utils/loadSpinner.js";
+import { dispatchEventDOM } from "../utils/dispatchEventDOM.js";
 
 export function addListController(advertList) {
   const showAddButton = document.createElement("button");
@@ -18,7 +18,14 @@ async function handleShowAddsButtonClicked(advertList) {
     const adds = await getAdds();
     adds.length > 0 ? renderAdds(adds, advertList) : buildEmptyAdvert();
   } catch (error) {
-    alert(error);
+    dispatchEventDOM(
+      "error-notification",
+      {
+        message: error,
+        type: "error",
+      },
+      advertList,
+    );
   } finally {
     loadSpinner("hide-spinner", advertList);
   }
