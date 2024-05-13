@@ -8,16 +8,6 @@ export async function parseAdds(data) {
   }));
 }
 
-/*return [
-        {
-            name: 'Computer',
-            image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/MSI_laptop_with_English_Wikipedia_screenshot_20100614.jpg/1280px-MSI_laptop_with_English_Wikipedia_screenshot_20100614.jpg',
-            description: "Ordenador MSI",
-            status: "Venta",
-            price: 150 
-        }
-    ];*/
-
 export async function getAdds() {
   const url = "http://localhost:8000/api/adverts";
 

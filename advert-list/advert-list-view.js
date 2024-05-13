@@ -6,3 +6,7 @@ export function builAdvert(advert) {
     <p>${advert.status}: ${advert.price}</p>
     `;
 }
+
+export function buildEmptyAdvert() {
+  return " <p>There is no adverts to show </p>";
+}
