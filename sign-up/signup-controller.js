@@ -39,9 +39,7 @@ async function handleSignUpForSubmit(register) {
     const passwordConfirmation = register.querySelector(
       "#password-confirmation",
     );
-    console.log(password.value == passwordConfirmation.value);
-    console.log(password.value);
-    console.log(passwordConfirmation.value);
+
     return password.value !== passwordConfirmation.value;
   }
 
@@ -55,8 +53,6 @@ async function handleSignUpForSubmit(register) {
 async function registerUser(register) {
   const email = register.querySelector("#email");
   const password = register.querySelector("#password");
-  console.log(email);
-  console.log(password);
 
   try {
     await createUser(email.value, password.value);

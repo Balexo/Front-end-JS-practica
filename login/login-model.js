@@ -1,10 +1,9 @@
 export async function loginUser(email, password) {
   const url = "http://localhost:8000/auth/login";
 
-  let response;
   try {
     debugger;
-    response = await fetch(url, {
+    let response = await fetch(url, {
       method: "POST",
       body: JSON.stringify({ username: email, password: password }),
       headers: {

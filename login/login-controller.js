@@ -1,4 +1,6 @@
 import { loginUser } from "./login-model.js";
+import { loadSpinner } from "../utils/loadSpinner.js";
+import { dispatchEventDOM } from "../utils/dispatchEventDOM.js";
 
 export const loginController = (loginForm) => {
   loginForm.addEventListener("submit", (event) => {
@@ -9,19 +11,35 @@ export const loginController = (loginForm) => {
 
 const submitLogin = async (loginForm) => {
   const { email, password } = getLoginData(loginForm);
+  const spinner = document.querySelector(".spinner");
 
   try {
+    loadSpinner("spinner-login-on", spinner);
     const jwt = await loginUser(email, password);
     localStorage.setItem("token", jwt);
-    window.location = "index.html";
+    dispatchEventDOM(
+      "login-correctly",
+      {
+        message: "Login correctly!",
+        type: "success",
+      },
+      loginForm,
+    );
+    setTimeout(() => {
+      window.location = "index.html";
+    }, "2000");
   } catch (error) {
-    alert(error);
+    dispatchEventDOM(
+      "error-login",
+      { message: error, type: "error" },
+      loginForm,
+    );
   } finally {
+    loadSpinner("spinner-login-off", spinner);
   }
 };
 
 const getLoginData = (loginForm) => {
-  debugger;
   const formData = new FormData(loginForm);
   const email = formData.get("email");
   const password = formData.get("password");
