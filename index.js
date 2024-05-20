@@ -1,9 +1,14 @@
 import { addListController } from "./advert-list/advert-list-controller.js";
 import { spinnerController } from "./spinner/spinner-controller.js";
 import { buildNotificationController } from "./notifications/notification-controller.js";
+import { sessionController } from "./session/session-controller.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const addList = document.querySelector(".advert-list");
+
+  //Session controler
+  const session = document.querySelector(".session");
+  sessionController(session);
 
   //Spinner
   const spinner = document.querySelector(".spinner");
