@@ -8,13 +8,17 @@ document.addEventListener("DOMContentLoaded", () => {
   //Spinner
   const spinner = document.querySelector(".spinner");
   const { showSpinner, hideSpinner } = spinnerController(spinner);
-  spinner.addEventListener("spinner-login-on", showSpinner);
-  spinner.addEventListener("spinner-login-off", hideSpinner);
+  loginForm.addEventListener("spinner-login-on", showSpinner);
+  loginForm.addEventListener("spinner-login-off", hideSpinner);
 
   //Notification
   const notification = document.querySelector(".notification-list");
   const { showNotifications } = buildNotificationController(notification);
   loginForm.addEventListener("error-login", (event) => {
+    showNotifications(event.detail.message, event.detail.type);
+    event.stopPropagation();
+  });
+  loginForm.addEventListener("login-correctly", (event) => {
     showNotifications(event.detail.message, event.detail.type);
     event.stopPropagation();
   });

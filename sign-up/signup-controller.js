@@ -1,64 +1,90 @@
 import { createUser } from "./signup-model.js";
+import { dispatchEventDOM } from "../utils/dispatchEventDOM.js";
+import { loadSpinner } from "../utils/loadSpinner.js";
 
-export function signupController(register) {
-  register.addEventListener("submit", (event) => {
+export function signupController(loginForm) {
+  loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    handleSignUpForSubmit(register);
+    loadSpinner("show-spinner", loginForm);
+    handleSignUpForSubmit(loginForm);
+    loadSpinner("hide-spinner", loginForm);
   });
 }
 
-async function handleSignUpForSubmit(register) {
+async function handleSignUpForSubmit(loginForm) {
   let errors = [];
 
-  if (validateEmail(register)) {
+  if (!validateEmail(loginForm)) {
     errors.push("El formato del correo no es correcto");
   }
 
-  if (validatePassword(register)) {
+  if (!validatePassword(loginForm)) {
     errors.push("Las contraseñas no son iguales");
   }
 
   showErrors(errors);
 
   if (errors.length === 0) {
-    registerUser(register);
+    registerUser(loginForm);
   }
 
-  function validateEmail(register) {
-    const email = register.querySelector("#email");
-    console.log(email.value);
+  function validateEmail(loginForm) {
+    const email = loginForm.querySelector("#email");
     const regex = new RegExp(
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     );
-    console.log(regex.test(email));
-    return regex.test(email);
+
+    return regex.test(email.value);
   }
 
-  function validatePassword(register) {
-    const password = register.querySelector("#password");
-    const passwordConfirmation = register.querySelector(
+  function validatePassword(loginForm) {
+    const password = loginForm.querySelector("#password");
+    const passwordConfirmation = loginForm.querySelector(
       "#password-confirmation",
     );
 
-    return password.value !== passwordConfirmation.value;
+    return password.value === passwordConfirmation.value;
   }
 
   function showErrors() {
     errors.forEach((error) => {
-      alert(error);
+      dispatchEventDOM(
+        "error-signup",
+        {
+          message: error,
+          type: "error",
+        },
+        loginForm,
+      );
     });
   }
 }
 
-async function registerUser(register) {
-  const email = register.querySelector("#email");
-  const password = register.querySelector("#password");
+async function registerUser(loginForm) {
+  const email = loginForm.querySelector("#email");
+  const password = loginForm.querySelector("#password");
 
   try {
     await createUser(email.value, password.value);
-    alert("Usuario creado correctamente");
-    window.location.href = "index.html";
+    dispatchEventDOM(
+      "signup-correctly",
+      {
+        message: "User created correctly",
+        type: "success",
+      },
+      loginForm,
+    );
+    setTimeout(() => {
+      window.location.href = "./login.html";
+    }, 3000);
   } catch (error) {
-    alert(error);
+    dispatchEventDOM(
+      "error-signup",
+      {
+        message: error,
+        type: "error",
+      },
+      loginForm,
+    );
   }
 }

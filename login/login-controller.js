@@ -11,10 +11,9 @@ export const loginController = (loginForm) => {
 
 const submitLogin = async (loginForm) => {
   const { email, password } = getLoginData(loginForm);
-  const spinner = document.querySelector(".spinner");
 
   try {
-    loadSpinner("spinner-login-on", spinner);
+    loadSpinner("spinner-login-on", loginForm);
     const jwt = await loginUser(email, password);
     localStorage.setItem("token", jwt);
     dispatchEventDOM(
@@ -35,7 +34,7 @@ const submitLogin = async (loginForm) => {
       loginForm,
     );
   } finally {
-    loadSpinner("spinner-login-off", spinner);
+    loadSpinner("spinner-login-off", loginForm);
   }
 };
 
