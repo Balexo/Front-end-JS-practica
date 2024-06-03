@@ -4,7 +4,7 @@ export const sessionController = (nav) => {
   if (userIsLoggedIn()) {
     nav.innerHTML = buildAuthenticatedSession();
     const logoutButton = nav.querySelector("button");
-    logoutButton.addEventListener(click, () => {
+    logoutButton.addEventListener("click", () => {
       localStorage.removeItem("token");
       sessionController(nav);
     });

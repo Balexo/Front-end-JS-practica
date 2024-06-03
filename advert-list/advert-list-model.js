@@ -1,5 +1,6 @@
 export async function parseAdds(data) {
   return data.map((data) => ({
+    id: data.id,
     name: data.name,
     image: data.image,
     description: data.description,
@@ -14,9 +15,7 @@ export async function getAdds() {
   let adverts = [];
   try {
     const response = await fetch(url);
-    console.log(response);
     const data = await response.json();
-    console.log("data", data);
     adverts = parseAdds(data);
   } catch (error) {
     throw new Error("Error obteniendo los anuncions");

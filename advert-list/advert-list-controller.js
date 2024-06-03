@@ -1,5 +1,5 @@
 import { getAdds } from "./advert-list-model.js";
-import { builAdvert, buildEmptyAdvert } from "./advert-list-view.js";
+import { buildAdvert, buildEmptyAdvert } from "./advert-list-view.js";
 import { loadSpinner } from "../utils/loadSpinner.js";
 import { dispatchEventDOM } from "../utils/dispatchEventDOM.js";
 
@@ -34,7 +34,7 @@ async function handleShowAddsButtonClicked(advertList) {
 async function renderAdds(adverts, advertList) {
   adverts.forEach((advert) => {
     const advertItem = document.createElement("div");
-    advertItem.innerHTML = builAdvert(advert);
+    advertItem.innerHTML = buildAdvert(advert);
     advertList.appendChild(advertItem);
   });
 }

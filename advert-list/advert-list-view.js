@@ -1,10 +1,12 @@
-export function builAdvert(advert) {
+export function buildAdvert(advert) {
   return `
-    <p>${advert.name}</p>
-    <p>${advert.image}</p>
-    <p>${advert.description}</p>
-    <p>${advert.status}: ${advert.price}</p>
-    `;
+      <a class="add" href="advert-detail.html?addId=${advert.id}">
+      <h2>${advert.name}</h2>
+      <p>${advert.image}</p>
+      <p>${advert.description}</p>
+      <p>${advert.status} : ${advert.price}</p>
+      </a>
+      `;
 }
 
 export function buildEmptyAdvert() {
