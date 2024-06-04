@@ -33,19 +33,17 @@ export function createAdvertController(createAd) {
 
     function isNameValid(createAd) {
       const name = createAd.querySelector("#name");
-      debugger;
-      name.value.length < 1 ? true : false;
+      return name.value.length > 1 ? true : false;
     }
 
     function isDescriptionValid(createAd) {
-      debugger;
       const description = createAd.querySelector("#description");
-      description.value.length > 3 ? true : false;
+      return description.value.length > 3 ? true : false;
     }
 
     function isPriceValid(createAd) {
       const price = createAd.querySelector("#price");
-      price.value > 1 ? true : false;
+      return price.value > 1 ? true : false;
     }
 
     function showErrors(errors) {

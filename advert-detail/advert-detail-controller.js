@@ -1,22 +1,52 @@
-import { getAddDetail } from "./advert-detail-model.js";
+import { getAddDetail, deleteAd, getUserData } from "./advert-detail-model.js";
 import { buildAdvert } from "../advert-list/advert-list-view.js";
 
 export async function getAddDetailController(advertDetail) {
-  goBackButton();
+  goBackButton(advertDetail);
+
   const params = new URLSearchParams(window.location.search);
   const addId = params.get("addId");
+
   if (!addId) {
     window.location.href = "./index.html";
   }
   try {
     const add = await getAddDetail(addId);
-    debugger;
     const container = advertDetail.querySelector(".container");
     container.innerHTML = buildAdvert(add);
+    handleDeleteAddButton(advertDetail, add);
   } catch (error) {
     alert(error);
   }
 
+  async function handleDeleteAddButton(advertDetail, ad) {
+    const token = localStorage.getItem("token");
+    const userData = await getUserData(token);
+
+    if (ad.user === userData.id) {
+      const deleteAdButton = advertDetail.querySelector("#deleteAdButton");
+      deleteAdButton.removeAttribute("disabled");
+
+      debugger;
+      deleteAdButton.addEventListener("click", () => {
+        debugger;
+        removeAd(ad.id, token);
+      });
+    }
+  }
+
+  async function removeAd(adId, token) {
+    if (window.confirm("Are you sure you would like to delete the advert?")) {
+      try {
+        debugger;
+        await deleteAd(adId, token);
+        alert("add deleted");
+        window.location = "./index.html";
+      } catch (error) {
+        alert(error);
+      }
+    }
+  }
   function goBackButton() {
     const goBackButton = document.querySelector("#goBack");
     goBackButton.addEventListener("click", () => {
