@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create ad</title>
+  </head>
+  <body>
+    <h2>Ad creation</h2>
+    <form class="create-ad">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" maxlength = "60" placeholder="Name of product" required />
+      </div>
+      <div>
+        <label for="description">Description:</label>
+        <input type="text" name="description" id="description" maxlength="200" placeholder="Short summary of product" required />
+      </div>
+      <div>
+        <label for="price">Price:</label>
+        <input type="number" name="price" id="price" placeholder="1" required />
+      </div>
+        <label for="status">Status:</label>
+        <input type="radio" name="status"  value="Venta" checked>Venta</input>
+        <input type="radio" name="status"  value="Compra">Compra</input>
+      </div>
+      <div>
+        <label for="image">Image:</label>
+        <input type="url" name="image" id="image" required placeholder="Upload product image"/>
+      </div>
+      <button type="submit">Create ad</button>
+    </form>
+    <script type="module" src="advert-creation.js"></script>
+  </body>
+</html>
