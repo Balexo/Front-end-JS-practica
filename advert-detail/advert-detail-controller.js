@@ -1,6 +1,7 @@
 import { getAddDetail, deleteAd, getUserData } from "./advert-detail-model.js";
 import { buildAdvert } from "../advert-list/advert-list-view.js";
 import { goBackButton } from "../utils/goBackButton.js";
+import { loadSpinner } from "../utils/loadSpinner.js";
 
 export async function getAddDetailController(advertDetail) {
   goBackButton(advertDetail);
@@ -13,12 +14,15 @@ export async function getAddDetailController(advertDetail) {
     window.location.href = "./index.html";
   }
   try {
+    loadSpinner("showSpinner", advertDetail);
     const add = await getAddDetail(addId);
     const container = advertDetail.querySelector(".container");
     container.innerHTML = buildAdvert(add);
     handleDeleteAddButton(advertDetail, add);
   } catch (error) {
     alert(error);
+  } finally {
+    loadSpinner("hideSpinner", advertDetail);
   }
 
   async function handleDeleteAddButton(advertDetail, ad) {

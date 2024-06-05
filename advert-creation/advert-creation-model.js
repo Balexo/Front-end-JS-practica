@@ -11,7 +11,6 @@ export const createAdvert = async (advert) => {
   };
 
   let response;
-  debugger;
   try {
     response = await fetch(url, {
       method: "POST",
@@ -21,8 +20,6 @@ export const createAdvert = async (advert) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(response);
-    debugger;
 
     if (!response.ok) {
       const data = await response.json();

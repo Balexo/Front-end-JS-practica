@@ -9,6 +9,7 @@ export function buildAdvert(advert) {
       `;
 }
 
-export function buildEmptyAdvert() {
-  return " <p>There is no adverts to show </p>";
+export function buildEmptyAdvert(advert) {
+  advert.innerHTML =
+    " <h2>We are sorry. So far there is no adverts to show </h2>";
 }

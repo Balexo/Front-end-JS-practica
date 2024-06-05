@@ -1,9 +1,10 @@
 import { createAdvert } from "./advert-creation-model.js";
 import { goBackButton } from "../utils/goBackButton.js";
+import { loadSpinner } from "../utils/loadSpinner.js";
 
 export function createAdvertController(insertAdFromUser) {
   goBackButton(insertAdFromUser);
-  debugger;
+
   insertAdFromUser.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -14,24 +15,14 @@ export function createAdvertController(insertAdFromUser) {
     let errors = [];
 
     if (!isNameValid(insertAdFromUser)) {
-      debugger;
       errors.push("Product name need to have at least 2 characteres");
     }
 
     if (!isDescriptionValid(insertAdFromUser)) {
-      debugger;
       errors.push("Description of product need to have at least 3 characteres");
     }
     if (!isPriceValid(insertAdFromUser)) {
-      debugger;
       errors.push("Price need to be higher than 1€");
-    }
-
-    showErrors(errors);
-
-    if (errors.length === 0) {
-      debugger;
-      createAdFormSubmit(insertAdFromUser);
     }
 
     function isNameValid(insertAdFromUser) {
@@ -54,6 +45,12 @@ export function createAdvertController(insertAdFromUser) {
         alert(error);
       }
     }
+
+    showErrors(errors);
+
+    if (errors.length === 0) {
+      createAdFormSubmit(insertAdFromUser);
+    }
   }
 
   function collectDataForm(insertAdFromUser) {
@@ -70,15 +67,18 @@ export function createAdvertController(insertAdFromUser) {
 
   async function createAdFormSubmit(insertAdFromUser) {
     try {
+      loadSpinner("showSpinner", insertAdFromUser);
+      debugger;
       const dataUserAdForm = collectDataForm(insertAdFromUser);
 
       await createAdvert(dataUserAdForm);
-      debugger;
       setTimeout(() => {
         window.location = "index.html";
       }, 2000);
     } catch (error) {
       alert(error);
+    } finally {
+      loadSpinner("hideSpinner", insertAdFromUser);
     }
   }
 }

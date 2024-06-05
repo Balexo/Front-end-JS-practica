@@ -7,7 +7,9 @@ export async function addListController(advertList) {
   try {
     loadSpinner("show-spinner", advertList);
     const adds = await getAdds();
-    adds.length > 0 ? renderAdds(adds, advertList) : buildEmptyAdvert();
+    adds.length > 0
+      ? renderAdds(adds, advertList)
+      : buildEmptyAdvert(advertList);
   } catch (error) {
     dispatchEventDOM(
       "error-notification",
