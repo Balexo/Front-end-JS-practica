@@ -30,6 +30,20 @@ export async function getAddDetail(addId) {
   }
 }
 
+export async function getAllIdAdverts() {
+  const url = `http://localhost:8000/api/adverts`;
+
+  let adId = [];
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    for (let ad of data) {
+      adId.push(ad.id);
+    }
+    return adId;
+  } catch (error) {}
+}
+
 export async function getUserData(token) {
   const url = `http://localhost:8000/auth/me`;
 
