@@ -1,11 +1,13 @@
 import { getAddDetail, deleteAd, getUserData } from "./advert-detail-model.js";
 import { buildAdvert } from "../advert-list/advert-list-view.js";
+import { goBackButton } from "../utils/goBackButton.js";
 
 export async function getAddDetailController(advertDetail) {
   goBackButton(advertDetail);
 
   const params = new URLSearchParams(window.location.search);
   const addId = params.get("addId");
+  debugger;
 
   if (!addId) {
     window.location.href = "./index.html";
@@ -46,11 +48,5 @@ export async function getAddDetailController(advertDetail) {
         alert(error);
       }
     }
-  }
-  function goBackButton() {
-    const goBackButton = document.querySelector("#goBack");
-    goBackButton.addEventListener("click", () => {
-      window.history.back();
-    });
   }
 }

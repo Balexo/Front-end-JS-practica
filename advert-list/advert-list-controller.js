@@ -3,16 +3,7 @@ import { buildAdvert, buildEmptyAdvert } from "./advert-list-view.js";
 import { loadSpinner } from "../utils/loadSpinner.js";
 import { dispatchEventDOM } from "../utils/dispatchEventDOM.js";
 
-export function addListController(advertList) {
-  const showAddButton = document.createElement("button");
-  showAddButton.textContent = "Mostrar anuncios";
-  advertList.appendChild(showAddButton);
-  showAddButton.addEventListener("click", async () => {
-    handleShowAddsButtonClicked(advertList);
-  });
-}
-
-async function handleShowAddsButtonClicked(advertList) {
+export async function addListController(advertList) {
   try {
     loadSpinner("show-spinner", advertList);
     const adds = await getAdds();

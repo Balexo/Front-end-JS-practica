@@ -1,25 +1,28 @@
 import { createAdvert } from "./advert-creation-model.js";
+import { goBackButton } from "../utils/goBackButton.js";
 
-export function createAdvertController(createAd) {
-  createAd.addEventListener("submit", (event) => {
+export function createAdvertController(insertAdFromUser) {
+  goBackButton(insertAdFromUser);
+  debugger;
+  insertAdFromUser.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    handleFieldsAdFormSubmit(createAd);
+    handleFieldsAdFormSubmit(insertAdFromUser);
   });
 
-  function handleFieldsAdFormSubmit(createAd) {
+  function handleFieldsAdFormSubmit(insertAdFromUser) {
     let errors = [];
 
-    if (!isNameValid(createAd)) {
+    if (!isNameValid(insertAdFromUser)) {
       debugger;
       errors.push("Product name need to have at least 2 characteres");
     }
 
-    if (!isDescriptionValid(createAd)) {
+    if (!isDescriptionValid(insertAdFromUser)) {
       debugger;
       errors.push("Description of product need to have at least 3 characteres");
     }
-    if (!isPriceValid(createAd)) {
+    if (!isPriceValid(insertAdFromUser)) {
       debugger;
       errors.push("Price need to be higher than 1€");
     }
@@ -28,21 +31,21 @@ export function createAdvertController(createAd) {
 
     if (errors.length === 0) {
       debugger;
-      createAdFormSubmit(createAd);
+      createAdFormSubmit(insertAdFromUser);
     }
 
-    function isNameValid(createAd) {
-      const name = createAd.querySelector("#name");
+    function isNameValid(insertAdFromUser) {
+      const name = insertAdFromUser.querySelector("#name");
       return name.value.length > 1 ? true : false;
     }
 
-    function isDescriptionValid(createAd) {
-      const description = createAd.querySelector("#description");
+    function isDescriptionValid(insertAdFromUser) {
+      const description = insertAdFromUser.querySelector("#description");
       return description.value.length > 3 ? true : false;
     }
 
-    function isPriceValid(createAd) {
-      const price = createAd.querySelector("#price");
+    function isPriceValid(insertAdFromUser) {
+      const price = insertAdFromUser.querySelector("#price");
       return price.value > 1 ? true : false;
     }
 
@@ -53,8 +56,8 @@ export function createAdvertController(createAd) {
     }
   }
 
-  function collectDataForm(createAd) {
-    const formData = new FormData(createAd);
+  function collectDataForm(insertAdFromUser) {
+    const formData = new FormData(insertAdFromUser);
 
     return {
       name: formData.get("name"),
@@ -65,9 +68,9 @@ export function createAdvertController(createAd) {
     };
   }
 
-  async function createAdFormSubmit(createAd) {
+  async function createAdFormSubmit(insertAdFromUser) {
     try {
-      const dataUserAdForm = collectDataForm(createAd);
+      const dataUserAdForm = collectDataForm(insertAdFromUser);
 
       await createAdvert(dataUserAdForm);
       debugger;

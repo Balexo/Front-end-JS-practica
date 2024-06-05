@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!token) {
     window.location.href = "index.html";
   }
-  const createAd = document.querySelector(".create-ad");
+  const insertAdFromUser = document.querySelector(".create-ad");
 
-  createAdvertController(createAd);
+  createAdvertController(insertAdFromUser);
 });

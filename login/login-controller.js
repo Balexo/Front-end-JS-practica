@@ -1,8 +1,11 @@
 import { loginUser } from "./login-model.js";
 import { loadSpinner } from "../utils/loadSpinner.js";
 import { dispatchEventDOM } from "../utils/dispatchEventDOM.js";
+import { goBackButton } from "../utils/goBackButton.js";
 
 export const loginController = (loginForm) => {
+  goBackButton(loginForm);
+
   loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
     submitLogin(loginForm);
