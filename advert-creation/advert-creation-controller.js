@@ -1,6 +1,7 @@
 import { createAdvert } from "./advert-creation-model.js";
 import { goBackButton } from "../utils/goBackButton.js";
 import { loadSpinner } from "../utils/loadSpinner.js";
+import { dispatchEventDOM } from "../utils/dispatchEventDOM.js";
 
 export function createAdvertController(insertAdFromUser) {
   goBackButton(insertAdFromUser);
@@ -42,7 +43,14 @@ export function createAdvertController(insertAdFromUser) {
 
     function showErrors(errors) {
       for (let error of errors) {
-        alert(error);
+        dispatchEventDOM(
+          "error-notification",
+          {
+            message: error,
+            type: "error",
+          },
+          insertAdFromUser,
+        );
       }
     }
 
@@ -72,11 +80,26 @@ export function createAdvertController(insertAdFromUser) {
       const dataUserAdForm = collectDataForm(insertAdFromUser);
 
       await createAdvert(dataUserAdForm);
+      dispatchEventDOM(
+        "advert-created",
+        {
+          message: "Advert created",
+          type: "success",
+        },
+        insertAdFromUser,
+      );
       setTimeout(() => {
         window.location = "index.html";
       }, 2000);
     } catch (error) {
-      alert(error);
+      dispatchEventDOM(
+        "error-notification",
+        {
+          message: error,
+          type: "error",
+        },
+        insertAdFromUser,
+      );
     } finally {
       loadSpinner("hideSpinner", insertAdFromUser);
     }

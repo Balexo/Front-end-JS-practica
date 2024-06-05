@@ -2,13 +2,13 @@ import { getAddDetail, deleteAd, getUserData } from "./advert-detail-model.js";
 import { buildAdvert } from "../advert-list/advert-list-view.js";
 import { goBackButton } from "../utils/goBackButton.js";
 import { loadSpinner } from "../utils/loadSpinner.js";
+import { dispatchEventDOM } from "../utils/dispatchEventDOM.js";
 
 export async function getAddDetailController(advertDetail) {
   goBackButton(advertDetail);
 
   const params = new URLSearchParams(window.location.search);
   const addId = params.get("addId");
-  debugger;
 
   if (!addId) {
     window.location.href = "./index.html";
@@ -20,7 +20,14 @@ export async function getAddDetailController(advertDetail) {
     container.innerHTML = buildAdvert(add);
     handleDeleteAddButton(advertDetail, add);
   } catch (error) {
-    alert(error);
+    dispatchEventDOM(
+      "error-notification",
+      {
+        message: error,
+        type: "error",
+      },
+      advertDetail,
+    );
   } finally {
     loadSpinner("hideSpinner", advertDetail);
   }
@@ -33,23 +40,37 @@ export async function getAddDetailController(advertDetail) {
       const deleteAdButton = advertDetail.querySelector("#deleteAdButton");
       deleteAdButton.removeAttribute("disabled");
 
-      debugger;
       deleteAdButton.addEventListener("click", () => {
-        debugger;
-        removeAd(ad.id, token);
+        removeAd(ad.id, token, advertDetail);
       });
     }
   }
 
-  async function removeAd(adId, token) {
+  async function removeAd(adId, token, advertDetail) {
     if (window.confirm("Are you sure you would like to delete the advert?")) {
       try {
-        debugger;
+        //throw new Error("This is a fake error");
         await deleteAd(adId, token);
-        alert("add deleted");
-        window.location = "./index.html";
+        dispatchEventDOM(
+          "add-deleted",
+          {
+            message: "Advert deleted succesfully",
+            type: "success",
+          },
+          advertDetail,
+        );
+        setTimeout(() => {
+          window.location = "./index.html";
+        }, 3000);
       } catch (error) {
-        alert(error);
+        dispatchEventDOM(
+          "error-notification",
+          {
+            message: error,
+            type: "error",
+          },
+          advertDetail,
+        );
       }
     }
   }
