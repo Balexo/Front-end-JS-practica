@@ -12,13 +12,14 @@ import { dispatchEventDOM } from "../utils/dispatchEventDOM.js";
 export async function getAddDetailController(advertDetail) {
   goBackButton(advertDetail);
   const adIds = await getAllIdAdverts();
-  console.log(adIds);
 
   const params = new URLSearchParams(window.location.search);
   const adCurrentId = Number(params.get("addId"));
 
   if (!adCurrentId) {
-    window.location.href = "./index.html";
+    setTimeout(() => {
+      window.location.href = "./index.html";
+    }, 3000);
   }
 
   if (adIds.includes(adCurrentId)) {
@@ -95,6 +96,6 @@ export async function getAddDetailController(advertDetail) {
 
     setTimeout(() => {
       window.location = "./index.html";
-    });
+    }, 3000);
   }
 }

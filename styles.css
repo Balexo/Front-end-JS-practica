@@ -1,0 +1,209 @@
+/*INDEX*/
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+nav {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: right; 
+}
+
+nav a,
+nav button {
+  color: #fff;
+  margin: 0 15px; 
+  text-decoration: none;
+}
+
+nav button {
+  background-color: #ff6347;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px auto; 
+}
+
+
+.advert-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 20px; 
+  padding: 10px;
+}
+
+.advert-list .add {
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin: 15px 0;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.advert-list .add {
+  text-decoration: none;
+  color: black;
+  display: block;
+  height: 100%;
+}
+
+.advert-list .add h2,
+.advert-list .add p {
+  margin: 10px 0;
+  word-wrap: break-word;
+}
+
+.advert-list .add h2 {
+  text-align: center;
+}
+
+
+@media only screen and (max-width: 768px) {
+  nav a,
+  nav button {
+    font-size: 14px; 
+  }
+
+  .advert-list .add h2 {
+    font-size: 16px; 
+  }
+}
+
+/*LOGIN && SIGN UP*/
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.login-form button[type="submit"],
+.create-ad button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#goBack {
+  background-color: #ff6347;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.create-ad {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+/*CREATE ADD*/
+
+h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.create-ad label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.create-ad input[type="text"],
+.create-ad input[type="number"],
+.create-ad input[type="url"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.create-ad .status {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.create-ad .status input[type="radio"] {
+  margin-right: 10px;
+}
+
+/*ADVERT DETAIL*/
+
+.advert {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  width: 50%;
+ margin:0 auto;
+ border: 1px solid black;
+}
+
+.advert button {
+  margin-bottom: 10px; /
+}
+
+#deleteAdButton {
+  background-color: #c01414a8;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  cursor: default;
+}
+
+.advert .container a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.advert .container h2 {
+  margin-bottom: 10px;
+}
+
+.advert .container p {
+  margin-bottom: 5px;
+}

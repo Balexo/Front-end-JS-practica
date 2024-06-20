@@ -1,0 +1,76 @@
+{
+  "adverts": [
+    {
+      "name": "Silla",
+      "image": "https://res.cloudinary.com/dvchdbgnq/image/upload/v1711184501/articles/tres_srpmzv.jpg",
+      "description": "Silla ergonómica 8h",
+      "status": "sales",
+      "price": "220",
+      "userId": 16,
+      "updatedAt": "2024-03-22T11:03:48.830Z",
+      "id": 3
+    },
+    {
+      "name": "¨Batería",
+      "image": "https://res.cloudinary.com/dvchdbgnq/image/upload/v1711184501/articles/un_zaghax.jpg",
+      "description": "Batería electrónica completa marca Thomann, Millenium MPS-600. Platos y pads con acabado en goma. Manual de uso e instrucciones de montaje originales. Buen estado, poco uso. Ver contenido completo en última foto. Recogida ocupa un trapecio de 90cm de ancho mayor, 25 de ancho menor y 80 de fondo.",
+      "status": "Compra",
+      "price": "250",
+      "userId": 16,
+      "updatedAt": "2024-03-22T11:49:08.299Z",
+      "id": 5
+    },
+    {
+      "name": "Pala pádel",
+      "image": "https://res.cloudinary.com/dvchdbgnq/image/upload/v1711184501/articles/tres_srpmzv.jpg",
+      "description": "PALA PADEL HEAD DELTA ELITE",
+      "status": "Venta",
+      "price": "70",
+      "userId": 16,
+      "updatedAt": "2024-03-22T11:55:47.155Z",
+      "id": 6
+    },
+    {
+      "name": "Estufa de leña",
+      "image": "https://res.cloudinary.com/dvchdbgnq/image/upload/v1711184501/articles/tres_srpmzv.jpg",
+      "description": "Estufa leña de 39cm de ancho por 66cm de largo. Perfecta para calentar una vivienda practicamente de 80 m cuadrados ella sola. Tubos de 2,40 m incluidos.",
+      "status": "Venta",
+      "price": "200",
+      "userId": 16,
+      "updatedAt": "2024-03-22T12:03:32.183Z",
+      "id": 8
+    },
+    {
+      "name": "Pantalón vaquero",
+      "image": "https://res.cloudinary.com/dvchdbgnq/image/upload/v1711184501/articles/dous_sgidw5.jpg",
+      "description": "Pantalón vaquero Levis",
+      "status": "Venta",
+      "price": "205",
+      "userId": 16,
+      "updatedAt": "2024-03-22T13:18:53.423Z",
+      "id": 9
+    },
+    {
+      "name": "Tennis Munich",
+      "image": "https://res.cloudinary.com/dvchdbgnq/image/upload/v1711184501/articles/un_zaghax.jpg",
+      "description": "tennis",
+      "status": "Venta",
+      "price": "60",
+      "userId": 16,
+      "updatedAt": "2024-03-22T13:20:45.018Z",
+      "id": 10
+    }
+  ],
+  "users": [
+    {
+      "username": "user@user.com",
+      "password": "$2b$10$cOIrw3fuYUh1OAjj6emuTeV1oMu1p7NFoPklauFrXMIkbGqIhA8B6",
+      "id": 16
+    },
+    {
+      "username": "oscar.vallejo@outlook.com",
+      "password": "$2b$10$bbcsCjEd.o9IQFqTDR6gTOQ7U1cFSDPgejpGqCSEbrNDR.ReJPI2m",
+      "id": 17
+    }
+  ]
+}

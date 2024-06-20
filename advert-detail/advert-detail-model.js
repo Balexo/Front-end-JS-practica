@@ -41,7 +41,9 @@ export async function getAllIdAdverts() {
       adId.push(ad.id);
     }
     return adId;
-  } catch (error) {}
+  } catch (error) {
+    throw new Error("Error getting all adId references");
+  }
 }
 
 export async function getUserData(token) {
